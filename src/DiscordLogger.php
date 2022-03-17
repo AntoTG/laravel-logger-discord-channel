@@ -16,7 +16,7 @@ class DiscordLogger
 	{
 		$log = new Logger('discord');
 
-		if (app()->environment($config['environment'] ?? 'production')) {
+		if($config['active']){
 			$log->pushHandler(new DiscordHandler($config['webhook'], config('app.name'), null, $config['level'] ?? 'DEBUG', true, $config['role_id'] ?? null, $config['username'], $config['avatar_src']));
 		}
 
