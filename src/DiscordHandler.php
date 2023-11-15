@@ -49,7 +49,7 @@ class DiscordHandler extends AbstractProcessingHandler
      * @param array $record
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function write(array $record): void
+    protected function write(\Monolog\LogRecord $record): void
     {
 
         if($record['level']==Logger::DEBUG || $record['level']==Logger::INFO){
