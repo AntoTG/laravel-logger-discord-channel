@@ -2,6 +2,7 @@
 
 namespace KABBOUCHI\LoggerDiscordChannel;
 
+use Monolog\Level;
 use Monolog\Logger;
 
 class DiscordLogger
@@ -17,7 +18,7 @@ class DiscordLogger
 		$log = new Logger('discord');
 
 		if($config['active']){
-			$log->pushHandler(new DiscordHandler($config['webhook'], config('app.name'), null, $config['level'] ?? 'DEBUG', true, $config['role_id'] ?? null, $config['username'], $config['avatar_src']));
+			$log->pushHandler(new DiscordHandler($config['webhook'], config('app.name'), null, $config['level'] ?? Level::Debug, true, $config['role_id'] ?? null, $config['username'], $config['avatar_src']));
 		}
 
 		return $log;
