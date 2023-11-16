@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use Monolog\Formatter\LineFormatter;
 use \Monolog\Logger;
+use \Monolog\Level;
 use \Monolog\Handler\AbstractProcessingHandler;
 
 class DiscordHandler extends AbstractProcessingHandler
@@ -32,7 +33,7 @@ class DiscordHandler extends AbstractProcessingHandler
 	 * @param bool $bubble
 	 * @param null $roleId
 	 */
-    public function __construct($webhook, $name, $subname = '', $level = Logger::DEBUG, $bubble = true, $roleId = null, $username, $avatarSrc)
+    public function __construct($webhook, $name, $subname = '', $level = Level::Debug, $bubble = true, $roleId = null, $username, $avatarSrc)
     {
         $this->name = $name;
         $this->subname = $subname;
@@ -41,7 +42,7 @@ class DiscordHandler extends AbstractProcessingHandler
 		$this->roleId = $roleId;
         $this->username = $username;
         $this->avatarSrc = $avatarSrc;
-        $this->level = $level;
+        $this->level = Level::fromName($level);
         parent::__construct($level, $bubble);
     }
 
@@ -52,9 +53,9 @@ class DiscordHandler extends AbstractProcessingHandler
     protected function write(\Monolog\LogRecord $record): void
     {
 
-        if($record['level']==Logger::DEBUG || $record['level']==Logger::INFO){
+        if($record['level']==Level::Debug->value || $record['level']==Level::Info->value){
             $color = hexdec("3366ff");
-        }elseif($record['level']==Logger::ERROR){
+        }elseif($record['level']==Level::Error->value){
             $color = hexdec("f44545");
         }else{
             $color = hexdec("6aa84f");
