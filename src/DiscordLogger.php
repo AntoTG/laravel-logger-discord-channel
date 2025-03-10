@@ -1,6 +1,6 @@
 <?php
 
-namespace KABBOUCHI\LoggerDiscordChannel;
+namespace antotg\LoggerDiscordChannel;
 
 use Monolog\Level;
 use Monolog\Logger;

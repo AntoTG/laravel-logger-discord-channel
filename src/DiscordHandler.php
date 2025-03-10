@@ -1,11 +1,8 @@
 <?php
 
-namespace KABBOUCHI\LoggerDiscordChannel;
+namespace antotg\LoggerDiscordChannel;
 
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use Monolog\Formatter\LineFormatter;
-use \Monolog\Logger;
 use \Monolog\Level;
 use \Monolog\Handler\AbstractProcessingHandler;
 
@@ -31,7 +28,9 @@ class DiscordHandler extends AbstractProcessingHandler
 	 * @param string $subname
 	 * @param int $level
 	 * @param bool $bubble
-	 * @param null $roleId
+	 * @param ?string $roleId
+     * @param ?string $username
+     * @param ?string $avatarSrc
 	 */
     public function __construct($webhook, $name, $subname = '', $level = Level::Debug, $bubble = true, $roleId = null, $username, $avatarSrc)
     {

@@ -3,7 +3,7 @@
 
 ## Install
 ```bash
-composer require kabbouchi/laravel-logger-discord-channel
+composer require antotg/laravel-logger-discord-channel
 
 ```
 
@@ -15,7 +15,7 @@ Add the new driver type in your `config/logging.php` configuration
 'channels' => [
     'discord' => [
         'driver' => 'custom',
-        'via' => KABBOUCHI\LoggerDiscordChannel\DiscordLogger::class,
+        'via' => antotg\LoggerDiscordChannel\DiscordLogger::class,
         'webhook' => 'https://discordapp.com/api/webhooks/.....',
         'level' => 'DEBUG',
         'role_id' => null, // role to tag in the error,
